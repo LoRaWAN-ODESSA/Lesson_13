@@ -31,16 +31,21 @@ public class ReportView {
 
     public void printTop5(ReportDtoAmount report) {
         int totalDash = 40;
+        int numDash = 5;
         int firstDashLength = 25;
         System.out.println("=".repeat(totalDash));
         System.out.println(DESCRIPTION + report.getName());
         System.out.println("=".repeat(totalDash));
 
-        System.out.println("Name" + (" ".repeat(firstDashLength - "Name".length())) + "Count");
+        Integer num = 1;
+        System.out.println("Num" + (" ".repeat(2)) + "Name" + (" ".repeat(firstDashLength - "Name".length())) + "Count");
         System.out.println("=".repeat(totalDash));
+
         for (BuyingDto buyingDto : report.getData()) {
-            System.out.println(buyingDto.getName() + (" ".repeat(firstDashLength - buyingDto.getName().length())) + buyingDto.getCount());
+            System.out.println(num + "." + (" ".repeat(numDash - num.toString().length() - 1)) + buyingDto.getName() +
+                    (" ".repeat(firstDashLength - buyingDto.getName().length())) + buyingDto.getCount());
             System.out.println("-".repeat(totalDash));
+            num++;
         }
         System.out.println("=".repeat(totalDash));
     }
